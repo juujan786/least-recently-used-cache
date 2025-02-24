@@ -7,7 +7,11 @@ class LRUCache {
   getItem(key) {
     if (!this.cache.has(key)) return -1; // Return -1 if key not found
     const value = this.cache.get(key);
+    console.log("value: " + value);
+
     this.cache.delete(key); // Remove from current position
+    console.log("getItem cache ", this.cache);
+
     this.cache.set(key, value); // Reinsert to update "recently used"
     return value;
   }
@@ -36,4 +40,5 @@ cache.setItem("b");
 cache.setItem("a");
 cache.setItem("d");
 cache.setItem("e");
-cache.setItem("f"); // This should remove 'c' (least recently used)
+cache.setItem("f");
+cache.getItem("a");
